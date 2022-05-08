@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se | Fséries</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/cadastro&login.css">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <script src="js/login&cadastro.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="filter-background">
+            <div class="back" onclick="voltar()">
+                <img src="assets/img/login&Cadastro/voltar-icon.svg" alt="voltar ao menu principal">
+                <p>VOLTAR</p>
+            </div>
+            <div class="form">
+                <div>
+                    <img src="assets/logo.svg" alt="Fseries">
+                </div>
+                <div>
+                    <p>Insira as informações para cadastrar-se</p>
+                    <p id="etapaLabel">ETAPA 1 DE 2</p>
+                    <div id="inputDiv">
+                        <span id="span_nome" style="display: none;">Nome precisa ser preenchido</span>
+                        <span id="span_cpf" style="display: none;">CPF precisa ser válido</span>
+                        <span id="span_cpf_existente" style="display: none;">CPF já cadastrado</span>
+                        <span id="span_dataNasc" style="display: none;">Data de nascimento precisa ser preenchido</span>
+                        <span id="span_email" style="display: none;">Email precisa ser válido</span>
+                        <span id="span_email_existente" style="display: none;">Email já cadastrado</span>
+                        <span id="span_senha" style="display: none;">Senha precisa ter no minimo 8 caracteres</span>
+                        <span id="senhaeconfirmar" style="display: none;">Senha e confirmar não correspondem</span>
+                    </div>
+                </div>
+                <div class="inputs">
+                    <div id="etapa0">
+                        <div>
+                            <label for="inputNome">Nome</label>
+                            <input id="inputNome" />
+                        </div>
+                        <div>
+                            <label for="inputCpf">CPF</label>
+                            <input type="text" id="inputCpf" maxlength="11" oninput="mascaraCPF()">
+                        </div>
+                    </div>
+                    <div id="etapa1" style="display: none;">
+                        <div>
+                            <label for="InputNascimento">Data de nascimento</label>
+                            <input type="date" id="InputNascimento">
+                        </div>
+                        <div>
+                            <label for="inputEmail">Email</label>
+                            <input id="inputEmail" type="email" onchange="validarEmail()"/>
+                        </div>
+                    </div>
+                    <div id="etapa2" style="display: none;">
+                        <div>
+                            <label for="inputSenha">Senha</label>
+                            <div>
+                                <input id="inputSenha" type="password" />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="inputConfirmarSenha">Confirmar senha</label>
+                            <input id="inputConfirmarSenha" type="password" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button onclick="cadastrar()">CONTINUAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

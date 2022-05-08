@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar | Fséries</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/cadastro&login.css">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <script src="js/login&cadastro.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="filter-background">
+            <div class="back" onclick="voltar()">
+                <img src="assets/img/login&Cadastro/voltar-icon.svg" alt="voltar ao menu principal">
+                <p>VOLTAR</p>
+            </div>
+            <div class="form">
+                <div>
+                    <img src="assets/logo.svg" alt="Fseries">
+                </div>
+                <div>
+                    <p>Use o seu melhor email para entrar</p>
+                    <span id="span_cadastroLogin" style="display: none;">Email e senha não conferem</span>
+                </div>
+                <div class="inputs">
+                    <div>
+                        <label for="inputEmail">Email</label>
+                        <input id="inputEmail" />
+                    </div>
+                    <div>
+                        <label for="inputSenha">Senha</label>
+                        <input id="inputSenha" type="password" />
+                    </div>
+                </div>
+                <div>
+                    <button onclick="entrar()">ENTRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

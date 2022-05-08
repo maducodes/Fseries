@@ -1,0 +1,198 @@
+.container {
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/img/login&Cadastro/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.filter-background {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(177, 177, 177, 0.12), rgba(0, 0, 0, 0.7));
+}
+
+.filter-background .back {
+    display: flex;
+    margin: 0 auto 0 50px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+.filter-background .back p {
+    font-family: 'poppinsRegular';
+    font-size: 18px;
+    color: #FFF;
+    margin-left: 20px;
+}
+
+.form {
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-family: 'poppinsRegular';
+    margin: auto auto;
+}
+
+.form p {
+    font-size: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.form span {
+    font-size: 16px;
+    color: #FF6060;
+    text-align: center;
+}
+
+#inputDiv {
+    height: 20px;
+}
+
+#span_nome, #span_cpf, #span_dataNasc, #span_email, #span_senha, #senhaeconfirmar {
+    animation: bounce 400ms;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+@keyframes bounce {
+    0% {
+      transform: translateX(0px);
+      timing-function: ease-in;
+    }
+    37% {
+      transform: translateX(5px);
+      timing-function: ease-out;
+    }
+    55% {
+      transform: translateX(-5px);
+      timing-function: ease-in;
+    }
+    73% {
+      transform: translateX(4px);
+      timing-function: ease-out;
+    }
+    82% {
+      transform: translateX(-4px);
+      timing-function: ease-in;
+    }
+    91% {
+      transform: translateX(2px);
+      timing-function: ease-out;
+    }
+    96% {
+      transform: translateX(-2px);
+      timing-function: ease-in;
+    }
+    100% {
+      transform: translateX(0px);
+      timing-function: ease-in;
+    }
+  }
+
+.form label {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.form input {
+    width: 100%;
+    padding: 0 20px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    outline: none;
+    color: #FFF;
+    font-size: 14px;
+}
+
+.form input:focus {
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.form .inputs div {
+    margin: 10px 0;
+}
+
+.form button {
+    width: 238px;
+    height: 45px;
+    background-color: #7600FF;
+    color: #FFF;
+    font-size: 20px;
+    font-family: 'poppinsMedium';
+    outline: none;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 0px;
+    transition: 200ms;
+    padding: 0 10px;
+}
+
+.form button:focus {
+    padding: 0px;
+    font-size: 19px;
+}
+
+.form div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.form>div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    margin-bottom: 15px;
+}
+
+.form>div:last-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 23px;
+}
+
+@media (max-width: 540px) {
+    .form {
+        max-width: 90%;
+    }
+
+    .form input {
+        width: 85vw;
+        padding: 0 7px;
+    }
+
+    .form p {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .filter-background .back {
+        margin: 0 auto 0 20px;
+        margin-top: 25px;
+    }
+
+    .filter-background .back p {
+        font-size: 16px;
+        margin-left: 10px;
+    }
+
+    .form button {
+        width: 80%;
+    }
+}
