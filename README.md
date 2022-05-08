@@ -5,7 +5,7 @@
 
 ## Sobre nós 💡
 
-Somos uma plataforma de streamming de séries gratuitas, sem fins lucrativos. 
+Somos uma plataforma de streamming de séries gratuitas, sem fins lucrativos. <br>
 Prezamos pelo entretenimento de todos.
 
 ## Demo 💻
@@ -16,9 +16,9 @@ Prezamos pelo entretenimento de todos.
 
 ## Tecnologias utilizadas 🔧
 
-HTML e Javascript - Estrutura do site
-CSS - Estilização do site
-NodeJS - Persistencia dos dados na base
+HTML e Javascript - Estrutura do site <br>
+CSS - Estilização do site <br>
+NodeJS - Persistencia dos dados na base <br>
 MySQL - Sistema de gerenciamento de banco de dados
 
 ## Contatos 📭
