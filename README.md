@@ -11,7 +11,7 @@ Prezamos pelo entretenimento de todos.
 ## Demo 💻
 
 <div align="center">
-  <img width="900px" src="https://i.ibb.co/ZxtS27R/serie-bridgerton.png" alt="protótipo site">
+  <img width="600px" src="https://i.ibb.co/ZxtS27R/serie-bridgerton.png" alt="protótipo site">
 </div>
 
 ## Tecnologias utilizadas 🔧
