@@ -5,6 +5,7 @@
 
 ## Sobre nós 💡
 
+Esse projeto foi desenvolvido com o intuito de aprimorar e praticar todo aprendizado obtido no 1º semestre da sptech.<br>
 Somos uma plataforma de streamming de séries gratuitas, sem fins lucrativos. <br>
 Prezamos pelo entretenimento de todos.
 
