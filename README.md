@@ -5,9 +5,8 @@
 
 ## Sobre nós 💡
 
-Esse projeto foi desenvolvido com o intuito de aprimorar e praticar todo aprendizado obtido no 1º semestre da sptech.<br>
-Somos uma plataforma de streamming de séries gratuitas, sem fins lucrativos. <br>
-Prezamos pelo entretenimento de todos.
+Esse projeto foi desenvolvido com o intuito de aprimorar e praticar todo aprendizado obtido no 1º semestre do curso de Análise e desenvolvimento de sistema da faculdade São Paulo Tech School.<br>
+Somos uma plataforma de streamming de séries gratuitas, sem fins lucrativos com o intuito de entregar entretenimento para todos.<br>
 
 ## Demo 💻
 
