@@ -1,8 +1,104 @@
+.bg-global {
+    background-color: #010100;
+}
+
 .container {
     width: 100vw;
     min-height: 100vh;
-    background-image: url('../assets/img/login&Cadastro/background.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+.container-padding {
+    width: 90%;
+}
+
+.filter-background {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(177, 177, 177, 0.12), rgba(0, 0, 0, 0.7));
+}
+
+.container .box-center {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    height: 80%;
+}
+
+.container div h1 {
+    font-family: 'poppinsBold';
+    font-size: 50px;
+    line-height: 100%;
+    color: #FFF;
+    margin-bottom: 15px;
+}
+
+.container div p {
+    font-family: 'poppinsMedium';
+    font-size: 20px;
+    color: #FFF;
+    margin-bottom: 15px;
+}
+
+.container div p span {
+    color: #18E256;
+}
+
+.container div button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 187px;
+    height: 55px;
+    font-family: 'poppinsMedium';
+    font-size: 20px;
+    background-color: #7600FF;
+    border-radius: 30px;
+    outline: none;
+    border: 0;
+    color: #FFF;
+}
+
+.container div button img {
+    margin-right: 13px;
+}
+
+.container div div div div {
+    display: flex;
+}
+
+.container .informacao {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 450px) {
+    .container {
+        min-height: 100vh;
+    }
+    
+    .filter-background {
+        height: 100vh;
+    }
+
+    .container div h1 {
+        font-size: 35px;
+    }
+
+    .container div p {
+        font-size: 16px;
+    }
+
+    .container div button {
+        width: 150px;
+        height: 45px;
+        font-size: 16px;
+    }
 }

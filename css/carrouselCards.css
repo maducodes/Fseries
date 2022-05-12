@@ -1,0 +1,61 @@
+.container-padding .container-carrousel {
+    width: 100%;
+}
+
+.all-carrousel-container .container-carrousel:first-child {
+    padding-top: 20px;
+    margin-top: -150px;
+}
+
+.all-carrousel-container .container-carrousel:last-child {
+    margin-bottom: 0px;
+    padding-bottom: 50px;
+}
+
+.container-carrousel {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.container-carrousel div {
+    display: flex;
+    overflow: auto;
+    cursor: grab;
+    scroll-behavior: smooth;
+    transition: 0.1s;
+}
+
+.container-carrousel .item {
+    min-width: 150px;
+    min-height: 215px;
+    border-radius: 10px;
+    padding: 0 10px;
+    cursor: pointer;
+    scroll-snap-align: center;
+}
+
+.item:first-child {
+    padding-left: 5%;
+}
+
+.container-carrousel .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.container-carrousel p {
+    font-family: 'poppinsMedium';
+    font-size: 16px;
+    color: #FFF;
+    margin-bottom: 33px;
+    padding-left: 5%;
+}
+
+@media (max-width: 540px) {
+    .all-carrousel-container .container-carrousel:first-child {
+        margin-top: -120px;
+    }
+}
