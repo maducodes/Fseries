@@ -192,3 +192,11 @@ function mascaraCPF() {
 
     validarCPF()
 }
+
+function redirectCadastro() {
+    window.location.href = "cadastro.html"
+}
+
+function redirectLogin() {
+    window.location.href = "login.html"
+}

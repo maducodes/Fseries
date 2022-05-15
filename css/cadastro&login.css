@@ -51,11 +51,17 @@
     text-align: center;
 }
 
+.redirectLogin p {
+    font-size: 16px;
+    text-align: start;
+    cursor: pointer;
+}
+
 #inputDiv {
     height: 20px;
 }
 
-#span_nome, #span_cpf, #span_dataNasc, #span_email, #span_senha, #senhaeconfirmar {
+#span_nome, #span_cpf, #span_dataNasc, #span_email, #span_senha, #senhaeconfirmar, #span_cadastroLogin {
     animation: bounce 400ms;
 }
 

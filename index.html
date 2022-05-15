@@ -12,9 +12,11 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/carrouselCards.css">
     <link rel="stylesheet" href="css/footer.css">
+    <script src="js/navbar.js"></script>
+    <script src="js/index.js"></script>
 </head>
 
-<body>
+<body onload="validarSessao()">
     <div class="bg-global">
         <div class="container" style="background-image: url('https://i.ibb.co/s2ymDVC/background.png');">
             <div class="filter-background">
@@ -33,7 +35,7 @@
                         <div>
                             <div>
                                 <div class="inputSearch">
-                                    <input id="search" placeholder="titulos, séries e genêros" />
+                                    <input id="searchInput" onkeyup="onSearch()" placeholder="pesquise por titulos" />
                                     <img src="assets/img/index/search-icon.svg">
                                 </div>
                             </div>
@@ -42,21 +44,25 @@
                                     <img src="assets/logo.svg" alt="Fseries">
                                 </div>
 
-                                <div>
-                                    <p>Bem vinda, Maria</p>
+                                <div onclick="openModal()">
+                                    <p id="saudacoes">Bem vinda, Maria</p>
                                     <img id="profileIcon" src="assets/img/index/logo-icon.svg">
                                 </div>
                             </div>
                         </div>
                     </nav>
+                    <div id="divPerfilorLogout" style="display: none;">
+                        <p id="meuPerfil">Meu perfil</p>
+                        <p id="sair">Sair</p>
+                    </div>
                 </div>
                 <div class="box-center">
                     <div class="container-padding">
                         <h1>BRIDGERTON</h1>
                         <p>Uma série original <span>Netflix</span> <span>98% relevância</span></p>
                         <div>
-                            <button><img src="assets/img/dashboard/play.svg" alt="Assistir">ASSISTIR</button>
-                            <img class="informacao" src="assets/img/dashboard/info.svg" alt="Mais informações" />
+                            <button onclick="play()"><img src="assets/img/dashboard/play.svg" alt="Assistir">ASSISTIR</button>
+                            <img onclick="verMais()" class="informacao" src="assets/img/dashboard/info.svg" alt="Mais informações" />
                         </div>
                     </div>
                 </div>
@@ -341,7 +347,7 @@
                 </div>
                 <div>
                     <h2>Newsletter</h2>
-                    <p>Se inscreva em nosso sistema para receber as primeiras novidades</p>
+                    <p>Se inscreva em nosso sistema para receber novidades</p>
                     <div>
                         <input id='emailNewsletter' placeholder="Email">
                         <img src="assets/img/footer/mail.svg">
