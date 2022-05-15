@@ -20,8 +20,9 @@ function entrar() {
             if (resposta.ok) {
                 resposta.json().then(json => {
                     sessionStorage.ID_USUARIO = json.id_usuario;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome_usuario;
+                    sessionStorage.EMAIL_USUARIO = json.email_usuario;
+                    window.location.href = "index.html"
                 });
             } else {
                 resposta.text().then(texto => {
@@ -47,6 +48,7 @@ function cadastrar() {
     var email = inputEmail.value
     var senha = inputSenha.value
     var confirmarSenha = inputConfirmarSenha.value
+    var icone = 0
 
     if (etapa == 0 && nome.length > 2 && cpf.length) {
         etapa0.style.display = 'none'
@@ -74,6 +76,8 @@ function cadastrar() {
                 dataNascimentoServer: dataNascimento,
                 emailServer: email,
                 senhaServer: senha,
+                adminServer: 0,
+                iconeServer: null
             })
         }).then(function (resposta) {
             if (resposta.ok) {

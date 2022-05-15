@@ -66,6 +66,10 @@
     color: #FFF;
 }
 
+.container div button:hover {
+    background-color: #5b00c4;
+}
+
 .container div button img {
     margin-right: 13px;
 }
@@ -77,6 +81,10 @@
 .container .informacao {
     margin-left: 20px;
     cursor: pointer;
+}
+
+.informacao:hover {
+    filter:invert(0.4);
 }
 
 @media (max-width: 450px) {
