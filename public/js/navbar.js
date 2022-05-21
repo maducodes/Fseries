@@ -8,7 +8,7 @@ function validarSessao() {
 }
 
 function openModal() {
-    if(divPerfilorLogout.style.display == 'none' && sessionStorage.ID_USUARIO) {
+    if (divPerfilorLogout.style.display == 'none' && sessionStorage.ID_USUARIO) {
         divPerfilorLogout.style.display = 'block'
     } else if (divPerfilorLogout.style.display == 'none' && !sessionStorage.ID_USUARIO && saudacoes.innerHTML == 'Entrar') {
         window.location.href = "login.html"
@@ -18,8 +18,16 @@ function openModal() {
 }
 
 function onSearch() {
-    var pesquisa = searchInput.value
-    console.log('to sendo chamado' + pesquisa)
+    var value = searchInput.value
+    if (value.length > 2) {
+        fetch(`/catalogo/listar?value=${value}`)
+        .then(data => data.json())
+        .then((data) => {
+            console.log(data)
+        }).catch(function (e) {
+            console.log(e)
+    });
+    }
 }
 
 function myprofile() {
