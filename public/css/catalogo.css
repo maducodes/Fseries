@@ -1,3 +1,8 @@
+.button-close {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
 .containerImage {
     background-repeat: no-repeat;
     background-size: cover;
@@ -48,6 +53,7 @@
 
 .boxInfo {
     padding-bottom: 70px;
+    margin-top: -100px;
 }
 
 .informacoes .boxInfo > div {
