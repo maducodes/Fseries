@@ -2,6 +2,8 @@ function verMais() {
     window.location.href = 'catalogo.html'
 }
 
-function play() {
-    
+function atualizarIcone() {
+    if (sessionStorage.URL_ICONE) {
+        profileIcon.src = sessionStorage.URL_ICONE
+    }
 }

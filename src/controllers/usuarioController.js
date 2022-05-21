@@ -44,7 +44,6 @@ function cadastrar(req, res) {
     var dataNasc = req.body.dataNascimentoServer
     var email = req.body.emailServer
     var senha = req.body.senhaServer
-    var admin = req.body.adminServer
     var icone = req.body.iconeServer
 
     if (nome == undefined) {
@@ -57,10 +56,8 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está indefinida!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
-    } else if (admin == undefined) {
-        res.status(400).send("Seu tipo de conta está indefinida!");
     } else {
-        usuarioModel.cadastrar(nome, cpf, dataNasc, email, senha, admin, icone)
+        usuarioModel.cadastrar(nome, cpf, dataNasc, email, senha, icone)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -78,7 +75,34 @@ function cadastrar(req, res) {
     }
 }
 
+function editar(req, res) {
+    var id_usuario = req.body.idUserServer
+    var nome = req.body.nomeServer
+    var cpf = req.body.cpfServer
+    var dataNasc = req.body.dataNascimentoServer
+    var email = req.body.emailServer
+    var senha = req.body.senhaServer
+    var icone = req.body.iconeServer
+
+    usuarioModel.editar(id_usuario, nome, cpf, dataNasc, email, senha, icone)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
+
 module.exports = {
     entrar,
     cadastrar,
+    editar
 }

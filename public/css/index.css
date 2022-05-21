@@ -74,6 +74,12 @@
     margin-right: 13px;
 }
 
+#profileIcon {
+    width: 45px;
+    height: 45px;
+    border-radius: 100px;
+}
+
 .container div div div div {
     display: flex;
 }

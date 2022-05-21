@@ -7,7 +7,7 @@ function entrar() {
     var senha = inputSenha.value
 
     if (email && senha && email.indexOf('@') > 1 && email.indexOf('.') > 1) {
-        fetch("/usuarios/autenticar", {
+        fetch("/usuario/entrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -21,7 +21,7 @@ function entrar() {
                 resposta.json().then(json => {
                     sessionStorage.ID_USUARIO = json.id_usuario;
                     sessionStorage.NOME_USUARIO = json.nome_usuario;
-                    sessionStorage.EMAIL_USUARIO = json.email_usuario;
+                    sessionStorage.URL_ICONE = json.url_icone;
                     window.location.href = "index.html"
                 });
             } else {

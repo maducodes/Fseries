@@ -16,7 +16,7 @@
     <script src="js/navbar.js"></script>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), atualizarIcone()">
     <div class="containerImage" style="background-image: url('https://i.ibb.co/s2ymDVC/background.png');">
         <div class="container-filter-shadow">
             <div class="container">
@@ -47,12 +47,16 @@
                                     </div>
 
                                     <div onclick="openModal()">
-                                        <p id="saudacoes">Bem vinda, Maria</p>
+                                        <p id="saudacoes"></p>
                                         <img id="profileIcon" src="assets/img/index/logo-icon.svg">
                                     </div>
                                 </div>
                             </div>
                         </nav>
+                        <div id="divPerfilorLogout" style="display: none;">
+                            <p id="meuPerfil">Meu perfil</p>
+                            <p id="sair" onclick="sair()">Sair</p>
+                        </div>
                     </div>
                     <div class="informacoes">
                         <div>
