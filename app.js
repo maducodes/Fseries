@@ -10,7 +10,8 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-var iconeRouter = require("./src/routes/icone")
+var iconeRouter = require("./src/routes/icone");
+var catalogoRouter = require("./src/routes/catalogo");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -21,6 +22,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuario", usuarioRouter);
 app.use("/icone", iconeRouter);
+app.use("/catalogo", catalogoRouter);
 
 app.listen(PORTA, function () {
 console.log(`Servidor do seu site já está rodando!!

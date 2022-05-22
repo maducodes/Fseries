@@ -63,27 +63,30 @@
 .resultadoSearch {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     position: absolute;
+    align-items: center;
     width: 280px;
-    height: 300px;
-    overflow-y: auto;
+    min-height: 0px;
+    max-height: 300px;
+    overflow-y: auto !important;
     border-radius: 15px;
     padding: 10px 10px;
     background-color: rgba(196, 196, 196, 0.7);
     top: 90px;
 }
 
-.itemResult {
-    margin: 10px 0;
-}
-
-.resultadoSearch div {
-    min-width: 120px;
+.resultadoSearch .itemResult {
+    display: flex;
+    width: 80%;
+    height: 140px;
     border-radius: 10px;
     padding: 0 10px;
     cursor: pointer;
-    scroll-snap-align: center;
+    margin: 0 auto;
+}
+
+.resultadoSearch div {
+    width: 100px;
 }
 
 .resultadoSearch div img {
@@ -91,6 +94,31 @@
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+}
+
+.resultadoSearch .box {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: auto;
+}
+
+.resultadoSearch .box span:first-child {
+    font-family: 'poppinsBold';
+    font-size: 16px;
+    color: #FFF;
+    text-align: start;
+    margin: 0 0 5px 0;
+    padding-top: 20px;
+}
+
+.resultadoSearch .box span {
+    font-family: 'poppinsRegular';
+    font-size: 14px;
+    color: #FFF;
+    text-align: start;
+    margin: 0;
 }
 
 .navbar .inputSearch input,

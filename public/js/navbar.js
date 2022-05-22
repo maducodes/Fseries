@@ -20,13 +20,30 @@ function openModal() {
 function onSearch() {
     var value = searchInput.value
     if (value.length > 2) {
-        fetch(`/catalogo/listar?value=${value}`)
-        .then(data => data.json())
-        .then((data) => {
-            console.log(data)
-        }).catch(function (e) {
-            console.log(e)
-    });
+        resultadoPesquisa.style.display = ''
+        fetch(`/catalogo/listar-por-nome?value=${value}`)
+            .then(data => data.json())
+            .then((data) => {
+                console.log(data)
+                for (let posicao = 0; posicao < data.length; posicao++) {
+                    resultadoPesquisa.innerHTML = `
+                        <div class="itemResult">
+                            <div>
+                                <img src="${data[posicao].thumbnail_catalogo}" alt="${data[posicao].nome_catalogo}">
+                            </div>
+                           <div class="box">
+                           <span>${data[posicao].nome_catalogo}</span>
+                           <span>${data[posicao].emissora_catalogo}</span>
+                           </div>
+                        </div>
+                    `
+
+                }
+            }).catch(function (e) {
+                console.log(e)
+            });
+    } else {
+        resultadoPesquisa.style.display = 'none'
     }
 }
 

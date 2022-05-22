@@ -17,9 +17,13 @@
     <script src="js/index.js"></script>
 </head>
 
-<body onload="validarSessao(), atualizarIcone()">
+<body onload="validarSessao(), atualizarIcone(), listarPorRelevancia(), 
+listarPorCategoria(2, comedia, titleComedia), listarPorCategoria(4, aventura, titleAventura),
+listarPorCategoria(3, romantica, titleRomantica), listarPorCategoria(9, ficcao, titleFiccao),
+listar()
+">
     <div class="bg-global">
-        <div class="container" style="background-image: url('https://i.ibb.co/f2TbvfD/693780.jpg');">
+        <div class="container" id="backgroundPrincipal">
             <div class="filter-background">
                 <div class="container-padding">
                     <nav class="navbar">
@@ -38,6 +42,8 @@
                                 <div class="inputSearch">
                                     <input id="searchInput" onkeyup="onSearch()" placeholder="pesquise por titulos" />
                                     <img src="assets/img/index/search-icon.svg">
+                                </div>
+                                <div id="resultadoPesquisa" class="resultadoSearch" style="display: none;">
                                 </div>
                             </div>
                             <div>
@@ -58,279 +64,33 @@
                     </div>
                 </div>
                 <div class="box-center">
-                    <div class="container-padding">
-                        <h1>GRAVITY FALLS</h1>
-                        <p>Uma série original <span style="color: #fff;">Netflix</span> <span>98% relevância</span></p>
-                        <div>
-                            <button onclick="play()"><img src="assets/img/dashboard/play.svg"
-                                    alt="Assistir">ASSISTIR</button>
-                            <img onclick="verMais()" class="informacao" src="assets/img/dashboard/info.svg"
-                                alt="Mais informações" />
-                        </div>
-                    </div>
+                    <div class="container-padding" id="conteudoPrincipal"></div>
                 </div>
             </div>
         </div>
         <div class="all-carrousel-container">
             <div class="container-carrousel">
-                <p>Mais relevantes</p>
-                <div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                </div>
+                <p id="titleRelevante"></p>
+                <div id="maiorRelevancia"></div>
             </div>
             <div class="container-carrousel">
-                <p>Cómedia</p>
-                <div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                </div>
+                <p id="titleComedia"></p>
+                <div id="comedia"></div>
             </div>
+
             <div class="container-carrousel">
-                <p>Teen</p>
-                <div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                </div>
+                <p id="titleAventura"></p>
+                <div id="aventura"></div>
             </div>
+
             <div class="container-carrousel">
-                <p>Romanticas</p>
-                <div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div>
-                            <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                        </div>
-                    </div>
-                </div>
+                <p id="titleRomantica"></p>
+                <div id="romantica"></div>
+            </div>
+
+            <div class="container-carrousel">
+                <p id="titleFiccao"></p>
+                <div id="ficcao"></div>
             </div>
         </div>
         <div class="footer">

@@ -1,3 +1,5 @@
 function atualizarIcone() {
-    profileIcon.src = sessionStorage.URL_ICONE
+    if (sessionStorage.URL_ICONE) {
+        profileIcon.src = sessionStorage.URL_ICONE
+    }
 }
