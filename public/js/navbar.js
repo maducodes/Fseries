@@ -7,6 +7,12 @@ function validarSessao() {
     }
 }
 
+function atualizarIcone() {
+    if (sessionStorage.URL_ICONE) {
+        profileIcon.src = sessionStorage.URL_ICONE
+    }
+}
+
 function openModal() {
     if (divPerfilorLogout.style.display == 'none' && sessionStorage.ID_USUARIO) {
         divPerfilorLogout.style.display = 'block'
@@ -54,4 +60,8 @@ function myprofile() {
 function sair() {
     sessionStorage.clear()
     window.location.reload()
+}
+
+function perfil() {
+    window.location.href = "/meuperfil.html"
 }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fséries - Minha conta</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/global.css">
+    <script src="js/navbar.js"></script>
+    <script src="js/perfil.js"></script>
+</head>
+
+<body onload="validarSessao(), validarLogin(), encontrarUsuario(), atualizarIcone()">
+    <div class="bg-global">
+        <div class="container" id="backgroundPrincipal" style="background-image: url(./assets/img/login&Cadastro/background.png);">
+            <div class="filter-background">
+                <div class="container-padding">
+                    <nav class="navbar">
+                        <div>
+                            <div onclick="voltar()">
+                                <img src="assets/logo.svg" alt="Fseries">
+                            </div>
+                            <div>
+                                <a>Início</a>
+                                <a>Séries</a>
+                                <a>Kids</a>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <div class="inputSearch">
+                                    <input id="searchInput" onkeyup="onSearch()" placeholder="pesquise por titulos" />
+                                    <img src="assets/img/index/search-icon.svg">
+                                </div>
+                                <div id="resultadoPesquisa" class="resultadoSearch" style="display: none;">
+                                </div>
+                            </div>
+                            <div>
+                                <div id="imagem-mobile">
+                                    <img src="assets/logo.svg" alt="Fseries">
+                                </div>
+
+                                <div onclick="openModal()">
+                                    <p id="saudacoes"></p>
+                                    <img id="profileIcon" src="assets/img/index/logo-icon.svg">
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <div id="divPerfilorLogout" style="display: none;">
+                        <p id="meuPerfil" onclick="perfil()">Meu perfil</p>
+                        <p id="sair" onclick="sair()">Sair</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

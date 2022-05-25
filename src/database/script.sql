@@ -1,3 +1,4 @@
+drop database fseries;
 create database fseries;
 use fseries;
 
@@ -31,7 +32,7 @@ create table catalogo (
     elenco_catalogo varchar(255),
     thumbnail_catalogo varchar(1000),
     sinopse_catalogo text,
-    url_video varchar(1000),
+    url_background varchar(1000),
     fk_categoria int, foreign key (fk_categoria) references categoria(id_categoria)
 );
 
@@ -88,45 +89,3 @@ INSERT INTO iconeperfil (nome_icone, url_icone) VALUES
 SELECT * FROM usuario;
 INSERT INTO usuario (nome_usuario, email_usuario, senha_usuario, data_nascimento, tipo_admin, fk_icone, cpf_usuario) 
 VALUES ('Maria Eduarda', 'maaahjx@gmail.com', '12345678', '2003/09/01', 1, 14, 52355271860);
-
-SELECT * FROM favoritos
-LEFT JOIN catalogo ON catalogo.id_catalogo = favoritos.fk_catalogo
-INNER JOIN temporada ON catalogo.id_catalogo = temporada.fk_catalogo
-INNER JOIN episodio ON temporada.id_temporada = episodio.fk_temporada;
-
-SELECT * FROM catalogo;
-INSERT INTO catalogo (nome_catalogo, emissora_catalogo, quantidade_visualizacao, elenco_catalogo, thumbnail_catalogo, sinopse_catalogo,
-url_video, fk_categoria)
-VALUES ('Bridgerton', 'Netflix', 0, 'Phoebe Dynevor, Jonathan Bailey, Regé-Jean Page',
- 'https://i.ibb.co/Y8D4N6y/card.png', 'Anthony inicia a procura por uma esposa, 
- Eloise é apresentada à sociedade e Lady Danbury ajuda a rainha a escolher o maior 
- diamante entre as debutantes da temporada.', 'https://www.youtube.com/watch?v=pyi8QAlHR8k&t=1s', 3),
- ('Vikins', 'Netflix', 0, 'Alex Høgh Andersen, Gustaf Skarsgård, Marco Ilsø',
- 'https://i.ibb.co/ZThwHWx/vikins.jpg', 'Esta série dramática acompanha a vida do viking Ragnar Lothbrok em sua jornada 
- para ampliar o domínio nórdico e desafiar um líder incompetente e sem visão.', 'https://www.youtube.com/watch?v=nHMQBg6Zduc', 4),
- ('Brooklyn Nine Nine', 'Netflix', 0, 'Andy Samberg, Andre Braugher, Stephanie Beatriz',
- 'https://i.ibb.co/qyJhsMq/brooklyn.jpg', 'O brilhante e imaturo detetive Jake Peralta precisa aprender a seguir as r
- egras e trabalhar em equipe quando um capitão exigente assume o comando de seu esquadrão.', 'https://www.youtube.com/watch?v=sEOuJ4z5aTc', 2),
-('The Mandalorian', 'Disney +', 0, 'Pedro Pascal, Troy Kotsur, Ming-Na Wen',
- 'https://i.ibb.co/PTFMhrB/2728562-jpg-c-310-420-49-62-f-jpg-q-x-xxyxx.jpg" alt="2728562-jpg-c-310-420-49-62-f-jpg-q-x-xxyxx',
- 'Em The Mandalorian, Din Djarin (Pedro Pascal) é um guerreiro solitário que trabalha como caçador de recompensa. Ele embarca numa jornada pelos territórios esquecidos da galáxia, 
- logo após a queda do Império e antes da criação da temida Primeira Ordem.', 'https://www.youtube.com/watch?v=rV-BmMbWEj4', 9),
- ('Carmen Sandiego', 'Netflix', 0, "Gina Rodriguez, Finn Wolfhard, Liam O'Brien",
- 'https://i.ibb.co/Th0fQyk/carmensandiego.jpg', 'A órfã Carmen se inscreve na Academia V.I.L.E., uma escola de ladrões. 
- Com o codinome de Ovelha Negra, ela faz amigos rapidamente... e inimigos também.', 'https://www.youtube.com/watch?v=yh2dFPgAWqc', 9);
-
-SELECT * FROM temporada;
-INSERT INTO temporada (numero_temporada, fk_catalogo) VALUES 
-(1, 3),
-(2, 3);
-
-INSERT INTO temporada (numero_temporada, fk_catalogo) VALUES 
-(1, 5),
-(2, 5),
-(3, 5);
-
-
-SELECT * FROM episodio;
-INSERT INTO episodio (nome_episodio, url_episodio, fk_temporada, numero_episodio) VALUES 
-('Diamante Raro', 'https://www.youtube.com/watch?v=tiDVB2DvYps', 1, 1),
-('Choque e Deleite', 'https://www.youtube.com/watch?v=tLmBAtfDp6s', 2, 2);

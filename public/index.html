@@ -20,7 +20,7 @@
 <body onload="validarSessao(), atualizarIcone(), listarPorRelevancia(), 
 listarPorCategoria(2, comedia, titleComedia), listarPorCategoria(4, aventura, titleAventura),
 listarPorCategoria(3, romantica, titleRomantica), listarPorCategoria(9, ficcao, titleFiccao),
-listar()
+listar(), atualizarIcone()
 ">
     <div class="bg-global">
         <div class="container" id="backgroundPrincipal">
@@ -59,7 +59,7 @@ listar()
                         </div>
                     </nav>
                     <div id="divPerfilorLogout" style="display: none;">
-                        <p id="meuPerfil">Meu perfil</p>
+                        <p id="meuPerfil" onclick="perfil()">Meu perfil</p>
                         <p id="sair" onclick="sair()">Sair</p>
                     </div>
                 </div>

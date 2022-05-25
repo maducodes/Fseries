@@ -12,9 +12,24 @@ function listar() {
     fetch(`/catalogo/listar`)
         .then(data => data.json())
         .then((data) => {
+
+            const posicao = Math.floor(Math.random() * data.length);
+            backgroundPrincipal.style.backgroundImage = `url('${data[posicao].url_background}')`
+            conteudoPrincipal.innerHTML = `
+                <h1>${data[posicao].nome_catalogo}</h1>
+                <p>Uma série original <span style="color: #fff;">${data[posicao].emissora_catalogo}</span>
+                <span>${data[posicao].quantidade_visualizacao}% relevância</span></p>
+                    <div>
+                        <button onclick="play()"><img src="assets/img/dashboard/play.svg"
+                                alt="Assistir">ASSISTIR</button>
+                        <img onclick="verMais()" class="informacao" src="assets/img/dashboard/info.svg"
+                            alt="Mais informações" />
+                    </div>
+            `
+
             setInterval(() => {
                 const posicao = Math.floor(Math.random() * data.length);
-                backgroundPrincipal.src = `${data[posicao].thumbnail_catalogo}`
+                backgroundPrincipal.style.backgroundImage = `url('${data[posicao].url_background}')`
                 conteudoPrincipal.innerHTML = `
                     <h1>${data[posicao].nome_catalogo}</h1>
                     <p>Uma série original <span style="color: #fff;">${data[posicao].emissora_catalogo}</span>
@@ -26,7 +41,7 @@ function listar() {
                                 alt="Mais informações" />
                         </div>
                 `
-            }, 15000);
+            }, 5000);
         }).catch(function (e) {
             console.log(e)
         });

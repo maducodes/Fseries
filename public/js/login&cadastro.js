@@ -19,9 +19,10 @@ function entrar() {
         }).then(function (resposta) {
             if (resposta.ok) {
                 resposta.json().then(json => {
-                    sessionStorage.ID_USUARIO = json.id_usuario;
-                    sessionStorage.NOME_USUARIO = json.nome_usuario;
-                    sessionStorage.URL_ICONE = json.url_icone;
+                    console.log(resposta)
+                    sessionStorage.ID_USUARIO = json[0].id_usuario;
+                    sessionStorage.NOME_USUARIO = json[0].nome_usuario;
+                    sessionStorage.URL_ICONE = json[0].url_icone;
                     window.location.href = "index.html"
                 });
             } else {

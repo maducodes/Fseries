@@ -1,5 +1,12 @@
 var database = require("../database/config")
 
+function listar(id_usuario) {
+    var instrucao = `
+    SELECT * FROM iconeperfil INNER JOIN usuario ON iconeperfil.id_icone = usuario.fk_icone WHERE id_usuario = ${id_usuario};
+    `;
+    return database.executar(instrucao);
+}
+
 function entrar(email, senha) {
     var instrucao = `
         SELECT * FROM usuario 
@@ -26,6 +33,7 @@ function editar(id_usuario,nome, cpf, dataNasc, email, senha, icone) {
 }
 
 module.exports = {
+    listar,
     entrar,
     cadastrar,
     editar
