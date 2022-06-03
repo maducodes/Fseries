@@ -19,12 +19,20 @@ function entrar() {
         }).then(function (resposta) {
             if (resposta.ok) {
                 resposta.json().then(json => {
-                    console.log(resposta)
                     sessionStorage.ID_USUARIO = json[0].id_usuario;
                     sessionStorage.NOME_USUARIO = json[0].nome_usuario;
                     sessionStorage.URL_ICONE = json[0].url_icone;
-                    window.location.href = "index.html"
-                });
+
+                    if (json[0].tipo_admin == 1) {
+                        window.location.href = "admin/dashboard.html"
+                        sessionStorage.ADMIN_ID = 1
+                    } else {
+                        window.location.href = "index.html"
+                        sessionStorage.ADMIN_ID = 0
+                    }
+                }).catch(() => {
+                    span_cadastroLogin.style.display = ''
+                })
             } else {
                 resposta.text().then(texto => {
                     console.error(texto);
@@ -49,9 +57,8 @@ function cadastrar() {
     var email = inputEmail.value
     var senha = inputSenha.value
     var confirmarSenha = inputConfirmarSenha.value
-    var icone = 0
 
-    if (etapa == 0 && nome.length > 2 && cpf.length) {
+    if (etapa == 0 && nome.length > 2 && cpf.length > 10 && span_cpf_existente.style.display == 'none') {
         etapa0.style.display = 'none'
         etapa1.style.display = 'block'
         etapaLabel.innerHTML = 'ETAPA 2 DE 3'
@@ -64,9 +71,9 @@ function cadastrar() {
         etapaLabel.innerHTML = 'ETAPA 2 DE 3'
         etapa++
         isClickedButton = false
-    } else if (etapa == 2 && nome.length && email.length && (senha.length >= 8) && (email.indexOf('@') > 1) && (email.indexOf('.') > 1) && senha == confirmarSenha) {
+    } else if (etapa == 2 && nome.length && dataNascimento.length && email.length && (senha.length >= 8) && (email.indexOf('@') > 1) && (email.indexOf('.') > 1) && senha == confirmarSenha) {
         let cpfSemPontuacao = inputCpf.value.replace(/([^0-9])+/g, "");
-        fetch("/usuarios/cadastrar", {
+        fetch("/usuario/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -96,8 +103,8 @@ function cadastrar() {
     } else {
         span_nome.style.display = 'none'
     }
-
-    if (etapa == 0 && isClickedButton && (!cpf.length)) {
+    console.log(cpf.length)
+    if (etapa == 0 && isClickedButton && (cpf.length < 11)) {
         span_cpf.style.display = ''
     } else {
         span_cpf.style.display = 'none'
@@ -131,6 +138,7 @@ function cadastrar() {
 
 function validarEmail() {
     const email = inputEmail.value
+
     if ((email) && (email.indexOf('@') > 1) && (email.indexOf('.') > 1)) {
         fetch("/usuarios/validaremail", {
             method: "POST",
@@ -145,7 +153,7 @@ function validarEmail() {
                 resposta.json().then(json => {
                     const data = JSON.stringify(json)
                     if (data.length) {
-                        span_email_existente.style.display = '' 
+                        span_email_existente.style.display = ''
                     }
                 });
             } else {
@@ -159,8 +167,8 @@ function validarEmail() {
 
 function validarCPF() {
     let cpfSemPontuacao = inputCpf.value.replace(/([^0-9])+/g, "");
-    if (cpfSemPontuacao) {
-        fetch("/usuarios/validaremail", {
+    if (cpfSemPontuacao.length > 9) {
+        fetch("/usuario/validarcpf", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -169,15 +177,14 @@ function validarCPF() {
                 cpfServer: cpfSemPontuacao
             })
         }).then(function (resposta) {
-            if (!resposta.ok) {
+            if (resposta.ok) {
                 resposta.json().then(json => {
-                    const data = JSON.stringify(json)
-                    if (data.length) {
-                        span_cpf_existente.style.display = '' 
+                    if (etapa == 0 && json.length) {
+                        span_cpf_existente.style.display = ''
+                    } else {
+                        span_cpf_existente.style.display = 'none'
                     }
                 });
-            } else {
-                span_cpf_existente.style.display = 'none'
             }
         }).catch(function (erro) {
             console.log(erro);

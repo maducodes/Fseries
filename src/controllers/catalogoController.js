@@ -1,7 +1,5 @@
 var catalogoModel = require("../models/catalogoModel");
 
-var sessoes = [];
-
 function listar(req, res) {
     catalogoModel.listar()
     .then(
@@ -10,9 +8,8 @@ function listar(req, res) {
         }
     ).catch(
         function (erro) {
-            console.log(erro);
             console.log(
-                "\nHouve um erro ao realizar o cadastro! Erro: ",
+                "\nHouve um erro ao realizar o listar! Erro: ",
                 erro.sqlMessage
             );
             res.status(500).json(erro.sqlMessage);
@@ -30,9 +27,8 @@ function listarporNome(req, res) {
             }
         ).catch(
             function (erro) {
-                console.log(erro);
                 console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    "\nHouve um erro ao realizar o listar por nome! Erro: ",
                     erro.sqlMessage
                 );
                 res.status(500).json(erro.sqlMessage);
@@ -48,9 +44,8 @@ function listarPorRelevante(req, res) {
             }
         ).catch(
             function (erro) {
-                console.log(erro);
                 console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    "\nHouve um erro ao realizar o listar por relevante! Erro: ",
                     erro.sqlMessage
                 );
                 res.status(500).json(erro.sqlMessage);
@@ -68,9 +63,27 @@ function listarPorCategoria(req, res) {
             }
         ).catch(
             function (erro) {
-                console.log(erro);
                 console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    "\nHouve um erro ao realizar o listar por categoria! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function listarPorId(req, res) {
+    var value = req.query.value
+
+    catalogoModel.listarPorId(value)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(
+                    "\nHouve um erro ao realizar o listar por categoria! Erro: ",
                     erro.sqlMessage
                 );
                 res.status(500).json(erro.sqlMessage);
@@ -82,5 +95,6 @@ module.exports = {
     listar,
     listarporNome,
     listarPorRelevante,
-    listarPorCategoria
+    listarPorCategoria,
+    listarPorId
 }

@@ -12,8 +12,7 @@ function encontrarUsuario() {
     var idUsuario = sessionStorage.ID_USUARIO
     fetch(`usuario/listar?value=${idUsuario}`)
         .then(data => data.json())
-        .then((data) => {
-            console.log(data)
+        .then(() => {
         }).catch(function (e) {
             console.log(e)
         });

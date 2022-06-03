@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     background-image: url('../assets/img/login&Cadastro/background.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -58,10 +58,10 @@
 }
 
 #inputDiv {
-    height: 20px;
+    min-height: 20px;
 }
 
-#span_nome, #span_cpf, #span_dataNasc, #span_email, #span_senha, #senhaeconfirmar, #span_cadastroLogin {
+#span_nome, #span_cpf, #span_cpf_existente, #span_dataNasc, #span_email, #span_senha, #senhaeconfirmar, #span_cadastroLogin {
     animation: bounce 400ms;
 }
 

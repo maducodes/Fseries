@@ -10,7 +10,6 @@ function listar(req, res) {
             }
         ).catch(
             function (erro) {
-                console.log(erro);
                 console.log(
                     "\nHouve um erro ao realizar o cadastro! Erro: ",
                     erro.sqlMessage
@@ -19,6 +18,25 @@ function listar(req, res) {
             }
         );
 }
+
+function ListarPorIdUser(req, res) {
+    var value = req.query.value
+    iconeModel.ListarPorIdUser(value)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 
 function cadastrar(req, res) {
     var url = req.body.urlServer
@@ -35,7 +53,6 @@ function cadastrar(req, res) {
                 }
             ).catch(
                 function (erro) {
-                    console.log(erro);
                     console.log(
                         "\nHouve um erro ao realizar o cadastro! Erro: ",
                         erro.sqlMessage
@@ -46,7 +63,29 @@ function cadastrar(req, res) {
     }
 }
 
+function editar(req, res) {
+    var id_icone = req.body.id_iconeServer
+    var id_usuario = req.body.id_usuarioServer
+
+    iconeModel.editar(id_icone, id_usuario)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     listar,
-    cadastrar
+    cadastrar,
+    editar,
+    ListarPorIdUser
 }

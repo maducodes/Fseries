@@ -5,6 +5,19 @@ function listar() {
     return database.executar(instrucao);
 }
 
+function listarPorId(id_catalogo) {
+    var instrucao = `
+    SELECT catalogo.*, categoria.nome_categoria, count(temporada.id_temporada) as 'quantidade_temporada',
+    count(episodio.id_episodio) as 'quantidade_episodio'
+    FROM catalogo 
+    INNER JOIN categoria ON id_categoria = fk_categoria
+    LEFT JOIN temporada ON id_catalogo = fk_catalogo
+    LEFT JOIN episodio ON id_temporada = fk_temporada
+    WHERE id_catalogo = ${id_catalogo}; 
+    `;
+    return database.executar(instrucao);
+}
+
 function listarporNome(valor_input) {
     var instrucao = `
     SELECT * FROM catalogo WHERE nome_catalogo LIKE '%${valor_input}%';
@@ -23,7 +36,7 @@ function listarPorCategoria(id_categoria) {
 
 function listarPorRelevante() {
     var instrucao = `
-    SELECT * FROM catalogo ORDER BY quantidade_visualizacao DESC;
+    SELECT * FROM catalogo ORDER BY quantidade_visualizacao DESC limit 20;
     `;
     return database.executar(instrucao);
 }
@@ -32,6 +45,6 @@ module.exports = {
     listar,
     listarporNome,
     listarPorRelevante,
-    listarPorCategoria
-
+    listarPorCategoria,
+    listarPorId
 };

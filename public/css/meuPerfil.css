@@ -1,0 +1,170 @@
+.card-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 60vw;
+    height: 70vh;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.32568) 16.32%, rgba(0, 0, 0, 0.5112) 41.7%, rgba(0, 0, 0, 0.72) 100%);
+    border-radius: 15px;
+    padding: 2vw;
+}
+
+.subNavbar {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.etapas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.subNavbar div {
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+    cursor: pointer;
+}
+
+.subNavbar p {
+    font-family: 'PoppinsRegular';
+    line-height: 24px;
+    margin-bottom: 0 !important;
+    margin-left: 15px;
+}
+
+.etapas div{
+    width: 70%;
+    display: flex;
+    flex-direction: column; 
+}
+
+#perfilNav div {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#perfilNav input {
+    width: 100%;
+    padding: 0 20px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    outline: none;
+    color: #FFF;
+    font-size: 14px;
+}
+
+#perfilNav input:focus {
+    border: 1px solid rgb(255, 255, 255);
+}
+
+#perfilNav label {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #FFF;
+    font-family: 'PoppinsRegular';
+}
+
+#perfilNav button {
+    width: 238px;
+    height: 45px;
+    background-color: #7600FF;
+    color: #FFF;
+    font-size: 20px;
+    font-family: 'poppinsMedium';
+    outline: none;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 0px;
+    transition: 200ms;
+    padding: 0 10px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.form button:focus {
+    padding: 0px;
+    font-size: 19px;
+}
+
+#iconSubnav {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+
+#favoritos {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;
+}
+
+#favoritos .p-title {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+#lista_favoritos, #listar_icone {
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+}
+
+.item-favorito {
+    max-width: 120px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.item-favorito img {
+    border-radius: 10px;
+    border: 1px solid transparent;
+}
+
+.item-favorito img:hover {
+    border: 1px solid #FFF;
+}
+
+.item-favorito .p-favorito {
+    width: 100%;
+    font-size: 12px;
+    margin: 3px;
+}
+
+.item-icone {
+    max-width: 60px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.item-icone img {
+    border-radius: 100%;
+    border: 1px solid transparent;
+}
+
+.item-icone .p-favorito {
+    width: 100%;
+    font-size: 12px;
+    margin: 3px;
+    text-align: center;
+}
+
+.item-icone img:hover {
+    border: 1px solid #FFF;
+}

@@ -10,14 +10,17 @@
     <link rel="stylesheet" href="css/perfil.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/meuPerfil.css">
     <script src="js/navbar.js"></script>
     <script src="js/perfil.js"></script>
+    <script src="js/meuPerfil.js"></script>
 </head>
 
-<body onload="validarSessao(), validarLogin(), encontrarUsuario(), atualizarIcone()">
+<body onload="validarSessao(), atualizarIcone(), listarperfil()">
     <div class="bg-global">
-        <div class="container" id="backgroundPrincipal" style="background-image: url(./assets/img/login&Cadastro/background.png);">
-            <div class="filter-background">
+        <div class="container" id="backgroundPrincipal"
+            style="background-image: url(./assets/img/login&Cadastro/background.png);">
+            <div class="filter-background" style="justify-content: space-between;">
                 <div class="container-padding">
                     <nav class="navbar">
                         <div>
@@ -25,23 +28,15 @@
                                 <img src="assets/logo.svg" alt="Fseries">
                             </div>
                             <div>
-                                <a>Início</a>
-                                <a>Séries</a>
-                                <a>Kids</a>
+                                <a href="index.html">Início</a>
+                                <a href="index.html">Séries</a>
+                                <a href="sobre.html">Sobre</a>
                             </div>
                         </div>
                         <div>
                             <div>
-                                <div class="inputSearch">
-                                    <input id="searchInput" onkeyup="onSearch()" placeholder="pesquise por titulos" />
-                                    <img src="assets/img/index/search-icon.svg">
-                                </div>
-                                <div id="resultadoPesquisa" class="resultadoSearch" style="display: none;">
-                                </div>
-                            </div>
-                            <div>
                                 <div id="imagem-mobile">
-                                    <img src="assets/logo.svg" alt="Fseries">
+                                    <img id="imagemNavbar" src="assets/logo.svg" alt="Fseries">
                                 </div>
 
                                 <div onclick="openModal()">
@@ -54,6 +49,56 @@
                     <div id="divPerfilorLogout" style="display: none;">
                         <p id="meuPerfil" onclick="perfil()">Meu perfil</p>
                         <p id="sair" onclick="sair()">Sair</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="card-center">
+                        <div class="subNavbar">
+                            <div style="margin-bottom: 50px;">
+                                <img src="./assets/img/index/logo-icon.svg" id="iconSubnav" />
+                                <p id="nomePerfil"></p>
+                            </div>
+                            <div onclick="trocaNav('perfil')">
+                                <img src="assets/img/perfil/user.svg" />
+                                <p>Perfil</p>
+                            </div>
+                            <div onclick="trocaNav('favoritos')">
+                                <img src="assets/img/perfil/star.svg" />
+                                <p>Favoritos</p>
+                            </div>
+                            <div onclick="trocaNav('icone')">
+                                <img src="assets/img/perfil/edit.svg" />
+                                <p>Editar icone</p>
+                            </div>
+                        </div>
+                        <div class="etapas">
+                            <div id="perfilNav">
+                                <div>
+                                    <label for="input_nome">Nome</label>
+                                    <input id="input_nome">
+                                </div>
+
+                                <div>
+                                    <label for="input_email">Email</label>
+                                    <input id="input_email">
+                                </div>
+
+                                <div>
+                                    <label for="input_cpf">Cpf</label>
+                                    <input id="input_cpf">
+                                </div>
+
+                                <button onclick="editarPerfil()">SALVAR</button>
+                            </div>
+                            <div id="favoritos" style="display: none;">
+                                <p class="p-title">Seus favoritos</p>
+                                <div id="lista_favoritos"></div>
+                            </div>
+                            <div id="iconePerfil" style="display: none;">
+                                <p class="p-title">Selecione o icone</p>
+                                <div id="listar_icone"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

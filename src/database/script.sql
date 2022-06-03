@@ -1,4 +1,3 @@
-drop database fseries;
 create database fseries;
 use fseries;
 
@@ -51,7 +50,7 @@ create table episodio (
 );
 
 create table favoritos (
-	id_catalogo int primary key auto_increment,
+	id_favorito int primary key auto_increment,
     fk_usuario int, foreign key (fk_usuario) references usuario(id_usuario),
     fk_catalogo int, foreign key (fk_catalogo) references catalogo(id_catalogo)
 );
@@ -84,8 +83,21 @@ INSERT INTO iconeperfil (nome_icone, url_icone) VALUES
 ('Carmen Sandiego', 'https://i.ibb.co/r3RtPNK/carmensandiego.png'),
 ('daphne - Bridgerton', 'https://i.ibb.co/Svw67Mc/bridgerton2.png'),
 ('Bojack Horseman', 'https://i.ibb.co/WF4hGTq/bojackhorseman.png'),
-('Edwina - Bridgerton', 'https://i.ibb.co/F8LF3sm/brideton.png');
+('Edwina - Bridgerton', 'https://i.ibb.co/F8LF3sm/brideton.png'),
+('fseries', 'https://i.ibb.co/JxvkPqs/favicon.png');
 
 SELECT * FROM usuario;
 INSERT INTO usuario (nome_usuario, email_usuario, senha_usuario, data_nascimento, tipo_admin, fk_icone, cpf_usuario) 
 VALUES ('Maria Eduarda', 'maaahjx@gmail.com', '12345678', '2003/09/01', 1, 14, 52355271860);
+
+select * from favoritos;
+select * from catalogo where id_catalogo = 29;
+insert into favoritos (fk_usuario, fk_catalogo) values (1, 39);
+
+select * from catalogo order by quantidade_visualizacao desc limit 5;
+select count(usuario.id_usuario) from usuario;
+-- calcular a media das visualizacoes na dash
+-- condicionais nos analitycs
+-- repeticoes e vetores ?
+
+delete from favoritos where fk_usuario = 1 and fk_catalogo = 2;

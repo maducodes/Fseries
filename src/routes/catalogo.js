@@ -19,4 +19,8 @@ router.get("/listar-por-relevante", function (req, res) {
     catalogoController.listarPorRelevante(req, res);
 });
 
+router.get("/listar-por-id", function (req, res) {
+    catalogoController.listarPorId(req, res);
+});
+
 module.exports = router;

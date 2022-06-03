@@ -23,6 +23,11 @@ function openModal() {
     }
 }
 
+function redirectCatalogo(id_catalogo) {
+    var id = id_catalogo
+    window.location.href = `/catalogo.html?idCatalogo=${id}`
+}
+
 function onSearch() {
     var value = searchInput.value
     if (value.length > 2) {
@@ -30,10 +35,9 @@ function onSearch() {
         fetch(`/catalogo/listar-por-nome?value=${value}`)
             .then(data => data.json())
             .then((data) => {
-                console.log(data)
                 for (let posicao = 0; posicao < data.length; posicao++) {
                     resultadoPesquisa.innerHTML = `
-                        <div class="itemResult">
+                        <div class="itemResult" onclick="redirectCatalogo(${data[posicao].id_catalogo})">
                             <div>
                                 <img src="${data[posicao].thumbnail_catalogo}" alt="${data[posicao].nome_catalogo}">
                             </div>
@@ -59,7 +63,7 @@ function myprofile() {
 
 function sair() {
     sessionStorage.clear()
-    window.location.reload()
+    window.location.href = "/index.html"
 }
 
 function perfil() {

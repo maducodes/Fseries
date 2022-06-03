@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/carrouselCards.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/catalogo.css">
+    <link rel="stylesheet" href="css/modalAssistir.css">
     <script src="js/navbar.js"></script>
     <script src="js/index.js"></script>
 </head>
@@ -23,6 +24,27 @@ listarPorCategoria(3, romantica, titleRomantica), listarPorCategoria(9, ficcao, 
 listar(), atualizarIcone()
 ">
     <div class="bg-global">
+        <div class="modal-bg" id="openModalAssistir" style="display: none;">
+            <div id="modalAssistir">
+                <div id="etapa1">
+                    <p>Escolha a temporada e o episodio.</p>
+                    <span id="spanEpisodio" class="error-span" style="display: none;">selecione uma temporada e um episodio</span>
+                    <div>
+                        <label for="temporada">Temporada</label>
+                        <select id="temporada" onblur="exibirEpisodios()"></select>
+                    </div>
+                    <div>
+                        <label for="episodio">Episodio</label>
+                        <select id="episodio"></select>
+                    </div>
+
+                    <button onclick="exibirEpisodio()">Assistir</button>
+                </div>
+                <div id="etapa2" style="display: none">
+
+                </div>
+            </div>
+        </div>
         <div class="container" id="backgroundPrincipal">
             <div class="filter-background">
                 <div class="container-padding">
@@ -32,9 +54,9 @@ listar(), atualizarIcone()
                                 <img src="assets/logo.svg" alt="Fseries">
                             </div>
                             <div>
-                                <a>Início</a>
-                                <a>Séries</a>
-                                <a>Kids</a>
+                                <a href="index.html">Início</a>
+                                <a href="#series">Séries</a>
+                                <a href="sobre.html">Sobre</a>
                             </div>
                         </div>
                         <div>
@@ -68,7 +90,7 @@ listar(), atualizarIcone()
                 </div>
             </div>
         </div>
-        <div class="all-carrousel-container">
+        <div class="all-carrousel-container" id="series">
             <div class="container-carrousel">
                 <p id="titleRelevante"></p>
                 <div id="maiorRelevancia"></div>

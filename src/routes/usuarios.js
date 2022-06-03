@@ -19,4 +19,8 @@ router.post("/editar", function (req, res) {
     usuarioController.editar(req, res);
 });
 
+router.post("/validarcpf", function (req, res) {
+    usuarioController.validarCPF(req, res);
+});
+
 module.exports = router;

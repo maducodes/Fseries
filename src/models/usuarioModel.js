@@ -16,25 +16,30 @@ function entrar(email, senha) {
     return database.executar(instrucao);
 }
 
-function cadastrar(nome, cpf, dataNasc, email, senha, icone) {
+function cadastrar(nome, cpf, dataNasc, email, senha) {
+    var fk_icone_padrao = 15
     var instrucao = `
         INSERT INTO usuario (nome_usuario, email_usuario, senha_usuario, data_nascimento, tipo_admin, fk_icone, cpf_usuario) 
-        values ('${nome}','${email}', '${senha}', '${dataNasc}', ${0}, ${icone}, '${cpf}');
+        values ('${nome}','${email}', '${senha}', '${dataNasc}', ${0}, ${fk_icone_padrao}, '${cpf}');
     `;
     return database.executar(instrucao);
 }
 
-function editar(id_usuario,nome, cpf, dataNasc, email, senha, icone) {
-    var instrucao = `
-    UPDATE usuario SET nome_usuario = '${nome}', email_usuario = '${email}', senha_usuario = '${senha}', 
-    data_nascimento = '${dataNasc}', fk_icone = ${icone}, cpf_usuario = '${cpf}' where id_usuario = ${id_usuario}
-    `;
+function editar(id_usuario, nome, cpf, email) {
+    var instrucao = `UPDATE usuario SET nome_usuario = '${nome}', email_usuario = '${email}', cpf_usuario = '${cpf}' 
+    where id_usuario = ${id_usuario}`;
     return database.executar(instrucao)
+}
+
+function validarCPF(cpf) {
+    var instrucao = `SELECT * FROM usuario WHERE cpf_usuario = '${cpf}';`;
+    return database.executar(instrucao);
 }
 
 module.exports = {
     listar,
     entrar,
     cadastrar,
-    editar
+    editar,
+    validarCPF
 };

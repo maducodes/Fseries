@@ -12,12 +12,34 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/carrouselCards.css">
+    <link rel="stylesheet" href="css/modalAssistir.css">
     <script src="js/catalogo.js"></script>
     <script src="js/navbar.js"></script>
 </head>
 
-<body onload="validarSessao(), atualizarIcone()">
-    <div class="containerImage" style="background-image: url('https://i.ibb.co/s2ymDVC/background.png');">
+<body onload="validarSessao(), atualizarIcone(), loadCatalogo()">
+    <div class="containerImage" id="containerImage">
+        <div class="modal-bg" id="openModalAssistir" style="display: none;">
+            <div id="modalAssistir">
+                <div id="etapa1">
+                    <p>Escolha a temporada e o episodio.</p>
+                    <span id="spanEpisodio" class="error-span" style="display: none;">selecione uma temporada e um episodio</span>
+                    <div>
+                        <label for="temporada">Temporada</label>
+                        <select id="temporada" onblur="exibirEpisodios()"></select>
+                    </div>
+                    <div>
+                        <label for="episodio">Episodio</label>
+                        <select id="episodio"></select>
+                    </div>
+
+                    <button onclick="exibirEpisodio()">Assistir</button>
+                </div>
+                <div id="etapa2" style="display: none">
+
+                </div>
+            </div>
+        </div>
         <div class="container-filter-shadow">
             <div class="container">
                 <div class="container-filter">
@@ -28,9 +50,9 @@
                                     <img src="assets/logo.svg" alt="Fseries">
                                 </div>
                                 <div>
-                                    <a>Início</a>
-                                    <a>Séries</a>
-                                    <a>Kids</a>
+                                    <a href="/index.html">Início</a>
+                                    <a href="/index.html">Séries</a>
+                                    <a href="/sobre.html">Sobre</a>
                                 </div>
                             </div>
                             <div>
@@ -39,6 +61,8 @@
                                         <input id="searchInput" onkeyup="onSearch()"
                                             placeholder="pesquise por titulos" />
                                         <img src="assets/img/index/search-icon.svg">
+                                    </div>
+                                    <div id="resultadoPesquisa" class="resultadoSearch" style="display: none;">
                                     </div>
                                 </div>
                                 <div>
@@ -54,112 +78,18 @@
                             </div>
                         </nav>
                         <div id="divPerfilorLogout" style="display: none;">
-                            <p id="meuPerfil">Meu perfil</p>
+                            <p id="meuPerfil" onclick="perfil()">Meu perfil</p>
                             <p id="sair" onclick="sair()">Sair</p>
                         </div>
                     </div>
-                    <div class="informacoes">
-                        <div>
-                            <div>
-                                <img id="thumbnail" src="https://i.ibb.co/Y8D4N6y/card.png">
-                            </div>
-                        </div>
-                        <div class="boxInfo">
-                            <div>
-                                <h1>BRIDGERTON</h1>
-                                <p><span>4 temporadas</span><span> 8 episodios</span><span>98% relevância</span></p>
-                                <div class="container-buttons">
-                                    <button onclick="play()"><img src="assets/img/dashboard/play.svg"
-                                            alt="Assistir">ASSISTIR</button>
-                                    <div>
-                                        <img width="30px" height="30px" class="informacao"
-                                            src="assets/img/catalogo/star.svg" alt="Mais informações" />
-                                        <p>FAVORITAR</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sinopse">
-                                <p>
-                                    Baseada no livro best-seller de Julia Quinn, Bridgerton mergulha no mundo sensual,
-                                    luxuoso e competitivo da alta sociedade londrina do início do século 19. Não
-                                    bastasse o fato de ambos agirem como se não estivessem interessados um pelo outro,
-                                    um escândalo preparado por Lady Whistledown (na voz de Julie Andrews) faz com que o
-                                    nome de Daphne seja manchado. Para se defender das calúnias, ela decide se aliar ao
-                                    rebelde duque, colocando à prova os valores e as aparências da elite de Londres.
-                                </p>
-                            </div>
-                            <div>
-                                <p>Elenco:<span>Phoebe Dynevor, Jonathan Bailey, Regé-Jean Page</span></p>
-                                <p>Gênero:<span>Drama, Romance</span></p>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="informacoes" id="informacoes"></div>
                 </div>
             </div>
-            <div class="all-carrousel-container" style="margin-top: 60px">
+            <div class="all-carrousel-container" style="margin-top: 200px">
                 <div class="container-carrousel">
-                    <p>Titulos semelhantes</p>
-                    <div>
-                        <div class="item">
-                            <div>
-                                <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <img src="https://i.ibb.co/JCr6zg6/card.png" alt="bridgerton">
-                            </div>
-                        </div>
+                    <div class="container-carrousel">
+                        <p>Titulos semelhantes</p>
+                        <div id="categoria"></div>
                     </div>
                 </div>
             </div>
