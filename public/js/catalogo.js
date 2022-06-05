@@ -79,6 +79,20 @@ async function loadCatalogo() {
 
             loadCarrousel(data[0].fk_categoria)
         });
+
+    newView(id_catalogo)
+}
+
+function newView(id_catalogo) {
+    fetch("/visualizacao/aumentar-visualizacao", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idCatalogo: id_catalogo
+        })
+    })
 }
 
 function loadCarrousel(id_categoria) {
@@ -88,11 +102,11 @@ function loadCarrousel(id_categoria) {
             if (data.length) {
                 for (let posicao = 0; posicao < data.length; posicao++) {
                     categoria.innerHTML += `
-        <div class="item" onclick="redirectCatalogo(${data[posicao].id_catalogo})">
-        <div>
-            <img src="${data[posicao].thumbnail_catalogo}" alt="${data[posicao].nome_catalogo}">
-        </div>
-        </div>`
+                        <div class="item" onclick="redirectCatalogo(${data[posicao].id_catalogo})">
+                            <div>
+                                <img src="${data[posicao].thumbnail_catalogo}" alt="${data[posicao].nome_catalogo}">
+                            </div>
+                        </div>`
                 }
             }
         }).catch(function (e) {

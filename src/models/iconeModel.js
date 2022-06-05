@@ -7,12 +7,12 @@ function listar() {
     return database.executar(instrucao);
 }
 
-function ListarPorIdUser() {
+function ListarPorIdUser(id_usuario) {
     var instrucao = `
     SELECT iconeperfil.url_icone 
     FROM usuario 
     JOIN iconeperfil ON iconeperfil.id_icone = usuario.fk_icone 
-    WHERE id_usuario = 1;
+    WHERE id_usuario = ${id_usuario};
     `;
     return database.executar(instrucao);
 }

@@ -1,7 +1,5 @@
 var iconeModel = require("../models/iconeModel");
 
-var sessoes = [];
-
 function listar(req, res) {
     iconeModel.listar()
         .then(

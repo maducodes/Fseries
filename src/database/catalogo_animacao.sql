@@ -189,11 +189,22 @@ VALUES
 'O Gambito da Rainha conta a história de Beth Harmon (Anya Taylor-Joy), uma menina órfã que se revela um prodígio do xadrez. Mas agora, aos 22 anos, ela precisa enfrentar seu vício para conseguir se tornar a maior jogadora do mundo. E quanto mais Beth aprimora suas habilidades no tabuleiro, mais a ideia de uma fuga lhe parece tentadora.',
 'https://i.ibb.co/zhvyNzL/gamb-bg.jpg', 3);
 
-select * from catalogo 
-where id_catalogo = 36;
+select * from catalogo
+where id_catalogo = 20;
 
-select * from temporada;
-INSERT INTO temporada (numero_temporada, fk_catalogo) values (2, 36);
-select * from episodio;
-INSERT INTO episodio (nome_episodio, numero_episodio, url_episodio, fk_temporada) 
-values ('Emily em Paris', 1, 'https://www.youtube.com/embed/Ep4mF7Ky2VI', 1);
+-- media de visualizacao de cada categoria
+SELECT categoria.nome_categoria, truncate(avg(catalogo.quantidade_visualizacao), 2) as 'media' FROM catalogo 
+INNER JOIN categoria ON categoria.id_categoria = catalogo.fk_categoria 
+GROUP BY categoria.id_categoria;
+
+-- quantidade de curtidas por categoria
+select count(favoritos.id_favorito) from catalogo 
+INNER JOIN favoritos ON catalogo.id_catalogo = favoritos.fk_catalogo
+INNER JOIN categoria ON categoria.id_categoria = catalogo.fk_categoria group by categoria.id_categoria;
+
+-- 5 series mais curtidas
+SELECT catalogo.*, count(favoritos.id_favorito) FROM catalogo INNER JOIN favoritos ON catalogo.id_catalogo = favoritos.fk_catalogo 
+group BY catalogo.id_catalogo ORDER BY count(favoritos.id_favorito) desc;
+
+-- 5 series mais visualizadas
+SELECT * FROM catalogo ORDER BY quantidade_visualizacao DESC LIMIT 5;

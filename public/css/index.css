@@ -67,7 +67,7 @@
 }
 
 .error-span {
-    font-family: 'PoppinsRegular';
+    font-family: 'Regular';
     color: red;
     font-size: 14px;
     animation: bounce 400ms;

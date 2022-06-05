@@ -1,14 +1,276 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fséries</title>
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
 </head>
+
 <body onload="validarSessao()">
-    dashboard aqui
+    <div class="container">
+        <nav class="navbar">
+            <div>
+                <img src="../assets/logo.svg" />
+            </div>
+            <div>
+                <div>
+                    <button>Novo catalogo</button>
+                </div>
+                <div>
+                    <a href="/index.html">
+                        <button>Ir para o site</button>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div class="content">
+            <div class="subNav">
+                <div class="item">
+                    <div>
+                        <p>Total de visualizações:</p>
+                        <h1>500</h1>
+                    </div>
+                    <div>
+                        <img src="../assets/img/dashboard/play.svg" />
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div>
+                        <p>Total de usuários ativos:</p>
+                        <h1>500</h1>
+                    </div>
+                    <div>
+                        <img src="../assets/img/perfil/user.svg" />
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div>
+                        <p>Média de favoritos em séries:</p>
+                        <h1>540</h1>
+                    </div>
+                    <div>
+                        <img src="../assets/img/dashboard/film.svg" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="graficos">
+                <div>
+                    <div>
+                        <p>Média de Favoritos por mês</p>
+                    </div>
+                    <div>
+                        <canvas id="mediaMes"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p>Categorias mais visualizadas</p>
+                    </div>
+                    <div>
+                        <canvas id="categoriaVisualizada"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="listas">
+                <div>
+                    <div>
+                        <p>Séries cadastradas</p>
+                    </div>
+                    <div>
+                        <div class="item">
+                            <div>
+                                <p>Emily in Paris</p>
+                                <span>Categoria: Romance</span>
+                            </div>
+                            <div>
+                                <p>Visualizações: 100</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <p>Emily in Paris</p>
+                                <span>Categoria: Romance</span>
+                            </div>
+                            <div>
+                                <p>Visualizações: 100</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <p>Emily in Paris</p>
+                                <span>Categoria: Romance</span>
+                            </div>
+                            <div>
+                                <p>Visualizações: 100</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <p>Emily in Paris</p>
+                                <span>Categoria: Romance</span>
+                            </div>
+                            <div>
+                                <p>Visualizações: 100</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <p>Emily in Paris</p>
+                                <span>Categoria: Romance</span>
+                            </div>
+                            <div>
+                                <p>Visualizações: 100</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p>Usuários Ativos:</p>
+                    </div>
+                    <div>
+                        <div class="item">
+                            <div>
+                                <p>Maria Eduarda</p>
+                                <p>maaahjx@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <p>Maria Eduarda</p>
+                                <p>maaahjx@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <p>Maria Eduarda</p>
+                                <p>maaahjx@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <p>Maria Eduarda</p>
+                                <p>maaahjx@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <p>Maria Eduarda</p>
+                                <p>maaahjx@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <p>Maria Eduarda</p>
+                                <p>maaahjx@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <p>Maria Eduarda</p>
+                                <p>maaahjx@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div>
+                                <p>Maria Eduarda</p>
+                                <p>maaahjx@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
+
+<script>
+    const meidaPorMes = document.getElementById('mediaMes');
+    const myChart = new Chart(meidaPorMes, {
+        type: 'bar',
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                label: 'Meses',
+                data: [120, 190, 30, 300, 20, 30],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 500000
+                }
+            }
+        }
+    });
+</script>
+
+<script>
+    const categoriaVisualizada = document.getElementById('categoriaVisualizada');
+    const categoriaVisualizadaChart = new Chart(categoriaVisualizada, {
+        type: 'doughnut',
+        data: {
+            labels: ['Romance', 'Aventura', 'Comédia', 'Ação', 'Animação'],
+            datasets: [{
+                label: 'Meses',
+                data: [120, 190, 30, 300, 20],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                }
+            },
+
+            legend: {
+                display: false
+            },
+        }
+    });
+</script>

@@ -50,13 +50,13 @@
 }
 
 #modalAssistir #etapa1 p {
-  font-family: 'PoppinsMedium';
+  font-family: 'poppinsMedium';
   font-size: 30px;
   color: #000;
 }
 
 #modalAssistir #etapa1 label {
-  font-family: 'PoppinsMedium';
+  font-family: 'poppinsMedium';
   font-size: 14px;
   color: #000;
   margin-bottom: 5px;
@@ -66,7 +66,7 @@
   width: 350px;
   height: 40px;
   border-radius: 15px;
-  font-family: 'PoppinsRegular';
+  font-family: 'poppinsRegular';
   padding: 0 10px;
   border: 1px solid #2D3748;
   background-color: transparent;

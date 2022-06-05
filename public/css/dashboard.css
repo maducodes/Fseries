@@ -1,0 +1,193 @@
+.container {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #963CFF;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 50px;
+    border-bottom: 2px solid #FFF;
+}
+
+.navbar div:last-child {
+    display: flex;
+}
+
+.navbar div:last-child button {
+    width: 160px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #FFF;
+    border: 0;
+    outline: none;
+    font-family: 12px;
+    font-family: 'interMedium';
+    color: #000;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.content {
+    width: 100%;
+}
+
+.content .subNav {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 200px;
+}
+
+.content .subNav .item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+    height: 90px;
+    background-color: #FFF;
+    border-radius: 10px;
+}
+
+.content .subNav .item p {
+    color: #9798AA;
+    font-family: 'interMedium';
+    font-family: 14px;
+    margin-bottom: 15px;
+}
+
+.content .subNav .item h1 {
+    font-size: 25px;
+    font-family: 'interBold';
+    color: #000;
+}
+
+.content .subNav .item div:last-child {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    background-color: #963CFF;
+    border-radius: 100px;
+}
+
+.content .graficos {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 200px;
+}
+
+.content .graficos>div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .graficos>div:first-child div:first-child {
+    width: 100%;
+}
+
+.content .graficos>div:first-child div:last-child {
+    width: 500px;
+    height: 300px;
+}
+
+.content .graficos>div:last-child div:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 450px;
+    margin-left: -75px;
+    margin-top: -98px;
+}
+
+.content .graficos>div:first-child {
+    background-color: #FFF;
+    width: 606px;
+    height: 330px;
+    border-radius: 10px;
+}
+
+.content .graficos>div:last-child {
+    background-color: #FFF;
+    width: 305px;
+    height: 330px;
+    border-radius: 10px;
+}
+
+.content .listas {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 200px;
+}
+
+.content .listas>div:first-child {
+    background-color: #FFF;
+    width: 606px;
+    height: 330px;
+    border-radius: 10px;
+}
+
+.content .listas>div:last-child {
+    background-color: #FFF;
+    width: 305px;
+    height: 330px;
+    border-radius: 10px;
+}
+
+.content .graficos p,
+.content .listas p {
+    font-family: 'interMedium';
+    font-size: 14px;
+    color: #9798AA;
+    margin: 20px 20px;
+}
+
+.content .listas > div:first-child > div:last-child, .content .listas > div:last-child > div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 250px;
+    overflow-y: auto !important;
+}
+
+.content .listas > div:first-child > div:last-child .item, .content .listas > div:last-child > div:last-child .item{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 90%;
+    height: 65px;
+    border: 1px solid #C8C8C8;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px 0;
+}
+
+.content .listas > div:first-child > div:last-child .item div:first-child {
+    width: 90%;
+    margin-left: 20px;
+}
+
+.content .listas > div:first-child > div:last-child .item div:last-child {
+    width: 30%;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.content .listas > div:first-child div:last-child .item span {
+    font-family: 'interMedium';
+    font-size: 14px;
+    margin: 0;
+    color: #9798AA;
+}
+
+.content .listas > div:first-child div:last-child .item p {
+    font-family: 'interMedium';
+    font-size: 14px;
+    margin: 0;
+    margin-bottom: 10px;
+}

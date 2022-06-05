@@ -116,11 +116,11 @@ function listarIcone() {
         });
 }
 
-function editarIcone(id_icone) {
+async function editarIcone(id_icone) {
     var id_icon = id_icone
     var id_user = sessionStorage.ID_USUARIO
 
-    fetch("/icone/editar", {
+    await fetch("/icone/editar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -129,9 +129,9 @@ function editarIcone(id_icone) {
             id_usuarioServer: id_user,
             id_iconeServer: id_icon
         })
-    }).then(function (resposta) {
+    }).then(async function (resposta) {
         if (resposta.ok) {
-            fetch(`/icone//listar-por-id-user?value=${id_user}`)
+            await fetch(`/icone/listar-por-id-user?value=${id_user}`)
                 .then(data => data.json())
                 .then((data) => {
                   sessionStorage.URL_ICONE = data[0].url_icone
