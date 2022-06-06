@@ -1,37 +1,51 @@
 .modal-bg {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-    cursor: pointer;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
 }
 
 @keyframes modalSlide {
-    from {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-  
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 #modalAssistir {
-    background-color: #fefefe;
-    margin: 5% 10%;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    height: 70%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fefefe;
+  margin: 5% 10%;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 70%;
 
-    animation-name: modalSlide;
-    animation-duration: 500ms;
+  animation-name: modalSlide;
+  animation-duration: 500ms;
+}
+
+#modalAssistir #btnClose {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  margin-left: auto !important;
+  border: 0;
 }
 
 #modalAssistir #etapa1 {
@@ -113,7 +127,7 @@
   animation-duration: 500ms;
 }
 
-#modalCatalogo > div:last-child {
+#modalCatalogo>div:last-child {
   margin-left: 50px;
   display: flex;
 }
@@ -138,7 +152,8 @@
   margin-bottom: 5px;
 }
 
-#modalCatalogo div select, #modalCatalogo div input {
+#modalCatalogo div select,
+#modalCatalogo div input {
   width: 250px;
   height: 30px;
   border-radius: 15px;

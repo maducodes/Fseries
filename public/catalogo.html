@@ -21,6 +21,9 @@
     <div class="containerImage" id="containerImage">
         <div class="modal-bg" id="openModalAssistir" style="display: none;">
             <div id="modalAssistir">
+                <button id="btnClose" onclick="fecharModalAssistir()">
+                    <img src="assets/img/close.svg"/>
+                </button>
                 <div id="etapa1">
                     <p>Escolha a temporada e o episodio.</p>
                     <span id="spanEpisodio" class="error-span" style="display: none;">selecione uma temporada e um episodio</span>
@@ -35,9 +38,7 @@
 
                     <button onclick="exibirEpisodio()">Assistir</button>
                 </div>
-                <div id="etapa2" style="display: none">
-
-                </div>
+                <div id="etapa2" style="display: none"></div>
             </div>
         </div>
         <div class="container-filter-shadow">
@@ -52,7 +53,6 @@
                                 <div>
                                     <a href="/index.html">Início</a>
                                     <a href="/index.html">Séries</a>
-                                    <a href="/sobre.html">Sobre</a>
                                 </div>
                             </div>
                             <div>

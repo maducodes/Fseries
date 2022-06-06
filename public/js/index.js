@@ -40,6 +40,18 @@ function listar() {
 
             setInterval(() => {
                 const posicao = Math.floor(Math.random() * data.length);
+                numero = data[posicao].quantidade_visualizacao
+
+                if (numero >= 0 && numero <= 100) {
+                    porcentagem = 25
+                } else if (numero > 100 && numero <= 200) {
+                    porcentagem = 50
+                } else if (numero > 200 && numero <= 400) {
+                    porcentagem = 75
+                } else {
+                    porcentagem = 100
+                }
+
                 backgroundPrincipal.style.backgroundImage = `url('${data[posicao].url_background}')`
                 conteudoPrincipal.innerHTML = `
                     <h1>${data[posicao].nome_catalogo}</h1>
