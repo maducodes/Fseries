@@ -10,17 +10,79 @@
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/grafico.js"></script>
+    <link rel="stylesheet" href="../css/modalAssistir.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), loadData()">
     <div class="container">
+        <div class="modal-bg" id="openModalAssistir" style="display: none;">
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <div id="modalCatalogo">
+                    <div>
+                        <p>Adicionar nova série</p>
+
+                        <span id="spanEpisodio" class="error-span" style="display: none;">Preencha os campos</span>
+                        <div>
+                            <label for="nome">Nome</label>
+                            <input id="nome" />
+                        </div>
+                        <div>
+                            <label for="emissora">Emissora</label>
+                            <input id="emissora" />
+                        </div>
+                        <div>
+                            <label for="elenco">Elenco</label>
+                            <input id="elenco" />
+                        </div>
+                        <div>
+                            <label for="thumbnail">Thumbnail</label>
+                            <input placeholder="https://thumbnail.jpg" id="thumbnail" />
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="sinopse">Sinopse</label>
+                            <input id="sinopse" />
+                        </div>
+                        <div>
+                            <label for="background">Background</label>
+                            <input id="background" placeholder="https://background.jpg" />
+                        </div>
+                        <div>
+                            <label for="categoria">Categoria</label>
+                            <select id="categoria">
+                                <option value="0">Selecione a categoria</option>
+                                <option value="1">Ação</option>
+                                <option value="2">Comédia</option>
+                                <option value="3">Romance</option>
+                                <option value="4">Aventura</option>
+                                <option value="5">Crime</option>
+                                <option value="6">Policial</option>
+                                <option value="7">Suspense</option>
+                                <option value="8">Ficção científica</option>
+                                <option value="9">Animação</option>
+                                <option value="10">Drama</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button onclick="adicionarSerie()">Adicionar</button>
+                            <button class="buttonClose" onclick="closeModalCatalogo()">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <nav class="navbar">
             <div>
                 <img src="../assets/logo.svg" />
             </div>
             <div>
                 <div>
-                    <button>Novo catalogo</button>
+                    <button onclick="openModalCatalogo()">Novo catalogo</button>
                 </div>
                 <div>
                     <a href="/index.html">
@@ -34,7 +96,7 @@
                 <div class="item">
                     <div>
                         <p>Total de visualizações:</p>
-                        <h1>500</h1>
+                        <h1 id="total_visualizacao">0</h1>
                     </div>
                     <div>
                         <img src="../assets/img/dashboard/play.svg" />
@@ -44,7 +106,7 @@
                 <div class="item">
                     <div>
                         <p>Total de usuários ativos:</p>
-                        <h1>500</h1>
+                        <h1 id="total_ativos">0</h1>
                     </div>
                     <div>
                         <img src="../assets/img/perfil/user.svg" />
@@ -54,7 +116,7 @@
                 <div class="item">
                     <div>
                         <p>Média de favoritos em séries:</p>
-                        <h1>540</h1>
+                        <h1 id="media_favoritos">0</h1>
                     </div>
                     <div>
                         <img src="../assets/img/dashboard/film.svg" />
@@ -65,10 +127,10 @@
             <div class="graficos">
                 <div>
                     <div>
-                        <p>Média de Favoritos por mês</p>
+                        <p>Quantidade de Favoritos por mês</p>
                     </div>
                     <div>
-                        <canvas id="mediaMes"></canvas>
+                        <canvas id="medidaMes"></canvas>
                     </div>
                 </div>
                 <div>
@@ -86,108 +148,13 @@
                     <div>
                         <p>Séries cadastradas</p>
                     </div>
-                    <div>
-                        <div class="item">
-                            <div>
-                                <p>Emily in Paris</p>
-                                <span>Categoria: Romance</span>
-                            </div>
-                            <div>
-                                <p>Visualizações: 100</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <p>Emily in Paris</p>
-                                <span>Categoria: Romance</span>
-                            </div>
-                            <div>
-                                <p>Visualizações: 100</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <p>Emily in Paris</p>
-                                <span>Categoria: Romance</span>
-                            </div>
-                            <div>
-                                <p>Visualizações: 100</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <p>Emily in Paris</p>
-                                <span>Categoria: Romance</span>
-                            </div>
-                            <div>
-                                <p>Visualizações: 100</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <p>Emily in Paris</p>
-                                <span>Categoria: Romance</span>
-                            </div>
-                            <div>
-                                <p>Visualizações: 100</p>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="lista_catalogo"></div>
                 </div>
                 <div>
                     <div>
                         <p>Usuários Ativos:</p>
                     </div>
-                    <div>
-                        <div class="item">
-                            <div>
-                                <p>Maria Eduarda</p>
-                                <p>maaahjx@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <p>Maria Eduarda</p>
-                                <p>maaahjx@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <p>Maria Eduarda</p>
-                                <p>maaahjx@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <p>Maria Eduarda</p>
-                                <p>maaahjx@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <p>Maria Eduarda</p>
-                                <p>maaahjx@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <p>Maria Eduarda</p>
-                                <p>maaahjx@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <p>Maria Eduarda</p>
-                                <p>maaahjx@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div>
-                                <p>Maria Eduarda</p>
-                                <p>maaahjx@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="lista_usuarios"></div>
                 </div>
             </div>
         </div>
@@ -195,82 +162,3 @@
 </body>
 
 </html>
-
-<script>
-    const meidaPorMes = document.getElementById('mediaMes');
-    const myChart = new Chart(meidaPorMes, {
-        type: 'bar',
-        data: {
-            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
-            datasets: [{
-                label: 'Meses',
-                data: [120, 190, 30, 300, 20, 30],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(153, 102, 255, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(153, 102, 255, 0.2)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 500000
-                }
-            }
-        }
-    });
-</script>
-
-<script>
-    const categoriaVisualizada = document.getElementById('categoriaVisualizada');
-    const categoriaVisualizadaChart = new Chart(categoriaVisualizada, {
-        type: 'doughnut',
-        data: {
-            labels: ['Romance', 'Aventura', 'Comédia', 'Ação', 'Animação'],
-            datasets: [{
-                label: 'Meses',
-                data: [120, 190, 30, 300, 20],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                }
-            },
-
-            legend: {
-                display: false
-            },
-        }
-    });
-</script>

@@ -91,9 +91,27 @@ function desFavoritar(req, res) {
     }
 }
 
+function mediaFavoritos(req, res) {
+    favoritoModel.mediaFavoritos()
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(
+                "\nHouve um erro ao realizar o cadastro! Erro: ",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
 module.exports = {
     listar,
     isFavorito,
     favoritar,
-    desFavoritar
+    desFavoritar,
+    mediaFavoritos
 }

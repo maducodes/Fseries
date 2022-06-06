@@ -208,3 +208,5 @@ group BY catalogo.id_catalogo ORDER BY count(favoritos.id_favorito) desc;
 
 -- 5 series mais visualizadas
 SELECT * FROM catalogo ORDER BY quantidade_visualizacao DESC LIMIT 5;
+
+select * from categoria;

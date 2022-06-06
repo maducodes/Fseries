@@ -16,6 +16,11 @@ function atualizarIcone() {
 function openModal() {
     if (divPerfilorLogout.style.display == 'none' && sessionStorage.ID_USUARIO) {
         divPerfilorLogout.style.display = 'block'
+        if(sessionStorage.ADMIN_ID == 1) {
+            dashboardID.style.display = ''
+        } else {
+            dashboardID.style.display = 'none'
+        }
     } else if (divPerfilorLogout.style.display == 'none' && !sessionStorage.ID_USUARIO && saudacoes.innerHTML == 'Entrar') {
         window.location.href = "login.html"
     } else {
@@ -68,4 +73,8 @@ function sair() {
 
 function perfil() {
     window.location.href = "/meuperfil.html"
+}
+
+function dashboard() {
+    window.location.href = "admin/dashboard.html"
 }

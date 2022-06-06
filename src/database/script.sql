@@ -52,7 +52,8 @@ create table episodio (
 create table favoritos (
 	id_favorito int primary key auto_increment,
     fk_usuario int, foreign key (fk_usuario) references usuario(id_usuario),
-    fk_catalogo int, foreign key (fk_catalogo) references catalogo(id_catalogo)
+    fk_catalogo int, foreign key (fk_catalogo) references catalogo(id_catalogo),
+    data_favorito datetime default current_timestamp
 );
 
 select * from categoria;
@@ -94,10 +95,42 @@ select * from favoritos;
 select * from catalogo where id_catalogo = 29;
 insert into favoritos (fk_usuario, fk_catalogo) values (1, 39);
 
-select * from catalogo order by quantidade_visualizacao desc limit 5;
-select count(usuario.id_usuario) from usuario;
--- calcular a media das visualizacoes na dash
--- condicionais nos analitycs
--- repeticoes e vetores ?
 
-delete from favoritos where fk_usuario = 1 and fk_catalogo = 2;
+
+
+-- total de usuarios
+select count(usuario.id_usuario) from usuario;
+
+select*from favoritos;
+
+-- total de visualizacao
+select sum(quantidade_visualizacao) as 'total_visualizacao' from catalogo;
+
+-- total de favoritos e series total de curtidas
+select count(favoritos.id_favorito) as 'quantidade_favoritos', count(distinct(fk_catalogo)) as 'quantidade_catalogo' from favoritos;
+
+-- favoritos por mes
+
+
+select count(*) from favoritos where cast(data_favorito as date) between '2022-06-01' and '2022-06-05';
+
+SELECT MONTH(cast(data_favorito as date)) AS mes, count(*) AS quantidade_favoritos 
+FROM favoritos GROUP BY MONTH(cast(data_favorito AS DATE))
+ORDER BY MONTH(cast(data_favorito as date)) ASC;
+
+select * from favoritos;
+
+SELECT cast(data_favorito as date) , Count(*)
+FROM favoritos;
+
+-- categorias mais visualizadas
+SELECT sum(quantidade_visualizacao) AS 'total_visualizacao', categoria.nome_categoria FROM catalogo
+INNER JOIN categoria ON categoria.id_categoria = catalogo.fk_categoria
+GROUP BY categoria.id_categoria ORDER BY sum(quantidade_visualizacao) DESC limit 5;
+
+-- lista de usuarios
+select nome_usuario, email_usuario from usuario;
+
+-- lista de series
+select catalogo.nome_catalogo, catalogo.quantidade_visualizacao, categoria.nome_categoria from catalogo
+INNER JOIN categoria on categoria.id_categoria = catalogo.fk_categoria;

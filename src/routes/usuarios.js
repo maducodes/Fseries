@@ -7,6 +7,16 @@ router.get("/listar", function (req, res) {
     usuarioController.listar(req, res);
 })
 
+
+router.get("/listar-usuarios", function (req, res) {
+    usuarioController.listarUsuarios(req, res);
+})
+
+
+router.get("/quantidade-usuarios", function (req, res) {
+    usuarioController.quantidadeUsuarios(req, res);
+})
+
 router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 })

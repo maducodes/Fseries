@@ -161,8 +161,3 @@ function exibirEpisodio() {
 function fecharModalAssistir() {
     openModalAssistir.style.display = 'none'
 }
-
-
-function fecharModalAssistir() {
-    openModalAssistir.style.display = 'none'
-}

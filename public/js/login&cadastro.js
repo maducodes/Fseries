@@ -24,11 +24,41 @@ function entrar() {
                     sessionStorage.URL_ICONE = json[0].url_icone;
 
                     if (json[0].tipo_admin == 1) {
-                        window.location.href = "admin/dashboard.html"
                         sessionStorage.ADMIN_ID = 1
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 1500,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                setInterval(() => {
+                                    window.location.href = "index.html"
+                                }, 1500);
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Logado com sucesso!'
+                        })
                     } else {
-                        window.location.href = "index.html"
                         sessionStorage.ADMIN_ID = 0
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 1500,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                setInterval(() => {
+                                    window.location.href = "index.html"
+                                }, 1500);
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Logado com sucesso!'
+                        })
                     }
                 }).catch(() => {
                     span_cadastroLogin.style.display = ''
@@ -89,7 +119,22 @@ function cadastrar() {
             })
         }).then(function (resposta) {
             if (resposta.ok) {
-                console.log('cadastro realizado')
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        setInterval(() => {
+                            window.location.href = "index.html"
+                        }, 1500);
+                    }
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: 'cadastrado com sucesso!'
+                })
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }

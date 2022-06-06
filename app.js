@@ -16,6 +16,8 @@ var favoritoRouter = require("./src/routes/favorito");
 var assistirRouter = require("./src/routes/assistir");
 var visualizacaoRouter = require("./src/routes/visualizacao");
 
+var graficoRouter = require("./src/routes/grafico");
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -29,6 +31,7 @@ app.use("/catalogo", catalogoRouter);
 app.use("/favorito", favoritoRouter);
 app.use("/assistir", assistirRouter);
 app.use("/visualizacao", visualizacaoRouter);
+app.use("/metricas", graficoRouter);
 
 app.listen(PORTA, function () {
 console.log(`Servidor do seu site já está rodando!!

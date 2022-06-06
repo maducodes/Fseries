@@ -7,6 +7,20 @@ function listar(id_usuario) {
     return database.executar(instrucao);
 }
 
+function listarUsuarios() {
+    var instrucao = `
+        SELECT nome_usuario, email_usuario FROM usuario;
+    `;
+    return database.executar(instrucao);
+}
+
+function quantidadeUsuarios() {
+    var instrucao = `
+    select count(usuario.id_usuario) as 'total_usuario' from usuario;
+    `;
+    return database.executar(instrucao);
+}
+
 function entrar(email, senha) {
     var instrucao = `
         SELECT * FROM usuario 
@@ -41,5 +55,7 @@ module.exports = {
     entrar,
     cadastrar,
     editar,
-    validarCPF
+    validarCPF,
+    quantidadeUsuarios,
+    listarUsuarios
 };

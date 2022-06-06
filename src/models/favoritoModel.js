@@ -10,6 +10,13 @@ function listar(id_usuario) {
     return database.executar(instrucao);
 }
 
+function mediaFavoritos() {
+    var instrucao = `
+    SELECT count(favoritos.id_favorito) as 'quantidade_favoritos', count(distinct(fk_catalogo)) as 'quantidade_catalogo' from favoritos;
+    `;
+    return database.executar(instrucao);
+}
+
 function isFavorito(id_catalogo, id_usuario) {
     var instrucao = `
     SELECT usuario.id_usuario, favoritos.* FROM usuario 
@@ -40,5 +47,6 @@ module.exports = {
     listar,
     isFavorito,
     favoritar,
-    desFavoritar
+    desFavoritar,
+    mediaFavoritos
 };

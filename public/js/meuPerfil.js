@@ -8,17 +8,17 @@ function atualizarIcone() {
 function listarperfil() {
     var id_usuario = sessionStorage.ID_USUARIO
     fetch(`/usuario/listar?value=${id_usuario}`)
-    .then(data => data.json())
-    .then((data) => {
-        if (data.length) {
-            input_nome.value = data[0].nome_usuario
-            input_email.value = data[0].email_usuario
-            input_cpf.value = data[0].cpf_usuario
-            sessionStorage.NOME_USUARIO = data[0].nome_usuario
-        }
-    }).catch(function (e) {
-        console.log(e)
-    });
+        .then(data => data.json())
+        .then((data) => {
+            if (data.length) {
+                input_nome.value = data[0].nome_usuario
+                input_email.value = data[0].email_usuario
+                input_cpf.value = data[0].cpf_usuario
+                sessionStorage.NOME_USUARIO = data[0].nome_usuario
+            }
+        }).catch(function (e) {
+            console.log(e)
+        });
 }
 
 function trocaNav(id) {
@@ -63,7 +63,17 @@ function editarPerfil() {
             })
         }).then(function (resposta) {
             if (resposta.ok) {
-                console.log('perfil editado')
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                })
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Perfil atualizado com sucesso!'
+                })
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
@@ -134,8 +144,23 @@ async function editarIcone(id_icone) {
             await fetch(`/icone/listar-por-id-user?value=${id_user}`)
                 .then(data => data.json())
                 .then((data) => {
-                  sessionStorage.URL_ICONE = data[0].url_icone
-                  window.location.reload()
+                    sessionStorage.URL_ICONE = data[0].url_icone
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            setInterval(() => {
+                                window.location.reload()
+                            }, 1000);
+                        }
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'Icone atualizado com sucesso!'
+                    })
                 }).catch(function (e) {
                     console.log(e)
                 });

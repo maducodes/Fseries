@@ -1,7 +1,7 @@
 var database = require("../database/config")
 
 function listar() {
-    var instrucao = `SELECT * FROM catalogo;`;
+    var instrucao = `SELECT catalogo.*, categoria.nome_categoria FROM catalogo INNER JOIN categoria on categoria.id_categoria = catalogo.fk_categoria;`;
     return database.executar(instrucao);
 }
 

@@ -7,6 +7,10 @@ router.get("/listar", function (req, res) {
     favoritoController.listar(req, res);
 });
 
+router.get("/media-favoritos", function (req, res) {
+    favoritoController.mediaFavoritos(req, res);
+});
+
 router.get("/isFavorito", function (req, res) {
     favoritoController.isFavorito(req, res);
 });
